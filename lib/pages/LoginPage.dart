@@ -7,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:c_for_chat/pages/HomePage.dart';
 
+//66@gmail.com 123456
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -45,6 +47,15 @@ class _LoginPageState extends State<LoginPage> {
       UserModel userModel = UserModel.fromMap(userData.data() as Map<String, dynamic>);
 
       print("LOGIN successful");
+      //go to homePage()
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context){
+                return HomePage(userModel:userModel, firebaseUser: credential!.user!);
+              }
+          )
+      );
     }
   }
 
