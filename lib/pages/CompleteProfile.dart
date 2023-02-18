@@ -41,7 +41,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
     File? croppedImage = await ImageCropper().cropImage(
         sourcePath: file.path,
       aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
-      compressQuality: 15,
+      compressQuality: 10,
     );
     //CroppedFile? croppedFile = await ImageCropper().cropImage(sourcePath: file.path);
     //File(croppedImage);

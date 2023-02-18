@@ -7,6 +7,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:c_for_chat/pages/HomePage.dart';
+import 'package:uuid/uuid.dart';
+//66@gmail.com 123456
+//59@gmail.com 123456
+//athoy@gmail.com 123456
+
+
+var uuid = Uuid();
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
