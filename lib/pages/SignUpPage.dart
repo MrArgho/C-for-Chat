@@ -56,7 +56,8 @@ class _SignUpPageState extends State<SignUpPage> {
       );
       await FirebaseFirestore.instance.collection("users").doc(uid).set(newUser.toMap()).then((value) {
         print("new user created :D");
-        Navigator.push(
+        Navigator.popUntil(context,(route)=> route.isFirst);
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context){

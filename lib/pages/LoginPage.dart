@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
 
       print("LOGIN successful");
       //go to homePage()
-      Navigator.push(
+      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context){
