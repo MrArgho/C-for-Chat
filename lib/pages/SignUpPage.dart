@@ -7,6 +7,8 @@ import 'package:c_for_chat/pages/HomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../models/UIHelper.dart';
+
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
 
@@ -26,10 +28,12 @@ class _SignUpPageState extends State<SignUpPage> {
     String cPassword=cPasswordController.text.trim();
 
     if(email=="" || password=="" || cPassword==""){
-      print("Please fill all the fields :)");
+      UIHelper.showAlertDialog(context, "Error404...!", "Please fill all the fields :)");  //showing Alert_Dialog
+      //print("Please fill all the fields :)");
     }
     else if(password!=cPassword){
-      print("Passwords donot match :)");
+      UIHelper.showAlertDialog(context, "Error404...!", "Passwords did not match  :)");  //showing Alert_Dialog
+      //print("Passwords donot match :)");
     }
     else{
       signUp(email, password);
@@ -38,12 +42,15 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void signUp(String email, String password) async {
+    UIHelper.showLoadingDialog(context,"Creating new account...");
     UserCredential? credential;
 
     try{
       credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch(ex){
-      print(ex.code.toString());
+      Navigator.pop(context);   //ei pop diye Loading dialog off hbe
+      UIHelper.showAlertDialog(context, "Error404...!", ex.code.toString());  //showing Alert_Dialog
+      //print(ex.code.toString());
     }
 
     if(credential != null){

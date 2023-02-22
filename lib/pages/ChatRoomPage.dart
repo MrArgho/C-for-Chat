@@ -49,6 +49,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
           .set(newMessage.toMap());
 
       widget.chatroom.lastMessage = msg;
+      widget.chatroom.createdon=DateTime.now();
       FirebaseFirestore.instance.collection("chatrooms").doc(widget.chatroom.chatroomid).set(widget.chatroom.toMap());
 
       log("message sent   :D");

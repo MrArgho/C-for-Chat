@@ -7,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:c_for_chat/pages/HomePage.dart';
 
+import '../models/UIHelper.dart';
+
 //66@gmail.com 123456
 
 class LoginPage extends StatefulWidget {
@@ -26,7 +28,8 @@ class _LoginPageState extends State<LoginPage> {
     String password = passwordController.text.trim();
 
     if(email == "" || password == ""){
-      print("Please fill all the fields :)");
+      UIHelper.showAlertDialog(context, "Error404...!", "Please fill all the fields :)");  //showing Alert_Dialog
+      //print("Please fill all the fields :)");
     }
     else{
       logIn(email,password);
@@ -34,11 +37,17 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void logIn(String email,String password) async {
+
+    UIHelper.showLoadingDialog(context,"Loggin In...");
+
     UserCredential? credential;
     try{
       credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
     }on FirebaseAuthException catch(ex){
-      print(ex.message.toString());
+      Navigator.pop(context); //for closing/not showing the Loading dialog
+      UIHelper.showAlertDialog(context, "Error404...!", ex.message.toString());  //showing Alert_Dialog
+
+      //print(ex.message.toString());
     }
 
     if(credential!=null){
@@ -47,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
       UserModel userModel = UserModel.fromMap(userData.data() as Map<String, dynamic>);
 
       print("LOGIN successful");
+      Navigator.popUntil(context, (route) => route.isFirst);  //appbar er backButton remove korar jnno
       //go to homePage()
       Navigator.pushReplacement(
           context,

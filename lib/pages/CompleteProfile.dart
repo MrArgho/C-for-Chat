@@ -13,6 +13,8 @@ import 'package:c_for_chat/pages/HomePage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../models/UIHelper.dart';
+
 class CompleteProfile extends StatefulWidget {
   final UserModel userModel;
   final User firebaseUser;
@@ -86,6 +88,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
   void checkValues(){
     String fullname  = fullNameController.text.trim();
     if(fullname=="" || imageFile==null){
+      UIHelper.showAlertDialog(context, "Error404...!", "Please Submit all requirements :)");  //showing Alert_Dialog
       print("Please Submit all requirements :)");
     }
     else{
@@ -95,6 +98,8 @@ class _CompleteProfileState extends State<CompleteProfile> {
   }
 
   void uploadData() async{
+    UIHelper.showLoadingDialog(context,"Uploading Data...");
+
     UploadTask uploadTask = FirebaseStorage.instance.ref("profilepictures").child(widget.userModel.uid.toString()).putFile(imageFile!);
     TaskSnapshot snapshot = await uploadTask;
 
