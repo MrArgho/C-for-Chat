@@ -91,7 +91,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   Text(
                     "C for Chat",
                     style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: Colors.blueGrey[900],
                         fontSize: 40,
                         fontWeight: FontWeight.bold
                     ),
@@ -124,7 +124,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     onPressed: (){
                       checkValues();
                     },
-                    color: Theme.of(context).colorScheme.secondary,
+                    //color: Theme.of(context).colorScheme.secondary,
+                    color: Colors.blueGrey[900],
                     child: Text("SIGNUP"),
                   )
 

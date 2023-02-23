@@ -67,6 +67,7 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey[900],
         title: Text("Search"),
       ),
       body: SafeArea(
@@ -85,7 +86,8 @@ class _SearchPageState extends State<SearchPage> {
                 onPressed: () {
                   setState(() {});
                 },
-                color: Theme.of(context).colorScheme.secondary,
+                color: Colors.blueGrey[900],
+                //color: Theme.of(context).colorScheme.secondary,
                 child: Text("Search"),
               ),
               SizedBox(
@@ -141,7 +143,7 @@ class _SearchPageState extends State<SearchPage> {
                             subtitle: Text(searchedUser.email!),
                             trailing: Icon(
                               Icons.mark_unread_chat_alt,
-                              color: Colors.lightBlue,
+                              color: Colors.blueGrey[900],
                             ));
                       } else {
                         return Text("No result Founded   :(");

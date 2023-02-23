@@ -129,6 +129,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey[900],
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Text("CompleteProfile"),
@@ -145,6 +146,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                 },
                 child: CircleAvatar(
                   radius: 50,
+                  backgroundColor: Colors.blueGrey[900],
                   backgroundImage: (imageFile != null ) ? FileImage(imageFile!) : null,
                   child: (imageFile == null ) ? Icon(Icons.person_4, size: 60,): null,
                 ),
@@ -161,7 +163,8 @@ class _CompleteProfileState extends State<CompleteProfile> {
                 onPressed: (){
                   checkValues();
                 },
-                color: Theme.of(context).colorScheme.secondary,
+                //color: Theme.of(context).colorScheme.secondary,
+                color: Colors.blueGrey[900],
                 child: Text("Update"),
               )
             ],

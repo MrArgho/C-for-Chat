@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor: Colors.blueGrey[900],
         title: Text("C for Chat"),
         actions: [
           IconButton(
@@ -73,28 +74,33 @@ class _HomePageState extends State<HomePage> {
                         if (userData.connectionState == ConnectionState.done) {
                           if (userData.data != null) {
                             UserModel targetUser = userData.data as UserModel;
-                            return ListTile(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) {
-                                    return ChatRoomPage(
-                                        targetUser: targetUser,
-                                        chatroom: chatRoomModel,
-                                        userModel: widget.userModel,
-                                        firebaseUser: widget.firebaseUser);
-                                  }),
-                                );
-                              },
-                              leading: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                    targetUser.profilepic.toString()),
+                            return Container(
+                              padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 7),
+                              child: ListTile(
+                                tileColor: Colors.grey[300],
+                                dense: false,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) {
+                                      return ChatRoomPage(
+                                          targetUser: targetUser,
+                                          chatroom: chatRoomModel,
+                                          userModel: widget.userModel,
+                                          firebaseUser: widget.firebaseUser);
+                                    }),
+                                  );
+                                },
+                                leading: CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      targetUser.profilepic.toString()),
+                                ),
+                                title: Text(targetUser.fullname.toString()),
+                                subtitle: (chatRoomModel.lastMessage.toString() != "") ? Text(
+                                  chatRoomModel.lastMessage.toString(),
+                                )
+                                    : Text("Say Hi to your new friend :D", style: TextStyle(color: Theme.of(context).colorScheme.secondary,),),
                               ),
-                              title: Text(targetUser.fullname.toString()),
-                              subtitle: (chatRoomModel.lastMessage.toString() != "") ? Text(
-                                chatRoomModel.lastMessage.toString(),
-                              )
-                                  : Text("Say Hi to your new friend :D", style: TextStyle(color: Theme.of(context).colorScheme.secondary,),),
                             );
                           } else {
                             return Container();
@@ -125,6 +131,7 @@ class _HomePageState extends State<HomePage> {
         )),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueGrey[900],
         onPressed: () {
           //UIHelper.showLoadingDialog(context,"Loading...");
           Navigator.push(context, MaterialPageRoute(builder: (context) {

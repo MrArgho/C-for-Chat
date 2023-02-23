@@ -111,6 +111,9 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                                     : MainAxisAlignment.start,
                                 children: [
                                   Container(
+                                      constraints: const BoxConstraints(
+                                        maxWidth: 300,
+                                      ),
                                       margin: EdgeInsets.symmetric(
                                         vertical: 2,
                                       ),
@@ -129,6 +132,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                                       ),
                                       child: Text(
                                           style: TextStyle(
+                                            fontSize: 18,
                                             color: Colors.black,
                                           ),
                                           currentMessage.text.toString())),
