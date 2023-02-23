@@ -3,6 +3,7 @@ import 'package:c_for_chat/models/UserModel.dart';
 import 'package:c_for_chat/pages/CompleteProfile.dart';
 import 'package:c_for_chat/pages/LoginPage.dart';
 import 'package:c_for_chat/pages/SignUpPage.dart';
+import 'package:c_for_chat/pages/Splash.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,8 @@ import 'package:uuid/uuid.dart';
 //66@gmail.com 123456
 //59@gmail.com 123456
 //athoy@gmail.com 123456
+//flutter build apk --split-per-abi
+//Built build\app\outputs\flutter-apk\app-armeabi-v7a-release.apk (9.1MB).
 
 
 var uuid = Uuid();
@@ -46,7 +49,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: Splash(),
     );
   }
 }
@@ -61,6 +64,7 @@ class MyAppLoggedIn extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      //home: HomePage(userModel: userModel, firebaseUser: firebaseUser),
       home: HomePage(userModel: userModel, firebaseUser: firebaseUser),
     );
   }
