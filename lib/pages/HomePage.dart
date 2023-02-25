@@ -77,6 +77,10 @@ class _HomePageState extends State<HomePage> {
                             return Container(
                               padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 7),
                               child: ListTile(
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(width: 1),
+                                  borderRadius: BorderRadius.circular(20), //<-- SEE HERE
+                                ),
                                 tileColor: Colors.grey[300],
                                 dense: false,
                                 onTap: () {
@@ -92,6 +96,7 @@ class _HomePageState extends State<HomePage> {
                                   );
                                 },
                                 leading: CircleAvatar(
+                                  radius: 24,
                                   backgroundImage: NetworkImage(
                                       targetUser.profilepic.toString()),
                                 ),

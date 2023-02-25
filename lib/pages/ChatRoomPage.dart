@@ -60,6 +60,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey[900],
         title: Row(
           children: [
             CircleAvatar(
@@ -123,17 +124,18 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                                       ),
                                       decoration: BoxDecoration(
                                         color: (currentMessage.sender ==
-                                                widget.userModel.uid)
+                                            widget.userModel.uid)
                                             ? Colors.grey
-                                            : Theme.of(context)
-                                                .colorScheme
-                                                .secondary,
+                                            : Colors.blueGrey[900],
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: Text(
                                           style: TextStyle(
                                             fontSize: 18,
-                                            color: Colors.black,
+                                            color: (currentMessage.sender ==
+                                                widget.userModel.uid)
+                                                ? Colors.black
+                                                : Colors.grey[200],
                                           ),
                                           currentMessage.text.toString())),
                                 ],
@@ -159,31 +161,35 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                   ),
                 ),
               ),
-              Container(
-                color: Colors.grey[200],
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: TextField(
-                        controller: messageController,
-                        maxLines:
-                            null, //eta dile keyboard e bottom-right corner e nextLine button ase
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Enter message"),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(55),
+                child: Container(
+                  color: Colors.grey[300],
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: Row(
+                    children: [
+                      Flexible(
+                        child: TextField(
+                          controller: messageController,
+                          maxLines:
+                              null, //eta dile keyboard e bottom-right corner e nextLine button ase
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Enter message"),
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        sendMessages();
-                      },
-                      icon: Icon(
-                        Icons.send,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                    )
-                  ],
+                      IconButton(
+                        onPressed: () {
+                          sendMessages();
+                        },
+                        icon: Icon(
+                          Icons.send,
+                          //color: Theme.of(context).colorScheme.secondary,
+                          color: Colors.blueGrey[900],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               )
             ],

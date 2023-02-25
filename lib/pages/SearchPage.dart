@@ -110,6 +110,10 @@ class _SearchPageState extends State<SearchPage> {
                             dataSnapShot.docs[0].data() as Map<String, dynamic>;
                         UserModel searchedUser = UserModel.fromMap(userMap);
                         return ListTile(
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 1),
+                              borderRadius: BorderRadius.circular(20), //<-- SEE HERE
+                            ),
                             tileColor: Colors.grey[200],
                             //selectedTileColor: Colors.black,
                             onTap: () async {
@@ -130,6 +134,7 @@ class _SearchPageState extends State<SearchPage> {
                               }
                             },
                             leading: CircleAvatar(
+                              radius: 23,
                               backgroundImage:
                                   NetworkImage(searchedUser.profilepic!),
                               backgroundColor: Colors.grey,
